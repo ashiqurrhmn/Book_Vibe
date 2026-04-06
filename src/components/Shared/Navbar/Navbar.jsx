@@ -10,12 +10,18 @@ const Navbar = () => {
     `mx-3 ${isActive ? "text-green-500 border border-green-500" :""}`}>Listed Books</NavLink></li>
     <li> <NavLink to = {"/page_read"} className={({isActive}) =>
     ` ${isActive ? "text-green-500 border border-green-500" :""}`}>Pages to Read</NavLink></li>
+    <li> <NavLink to = {"/page_read"} className={({isActive}) =>
+    ` ${isActive ? "text-green-500 border border-green-500" :""}`}>Sing in</NavLink></li>
+    <li> <NavLink to = {"/page_read"} className={({isActive}) =>
+    ` ${isActive ? "text-green-500 border border-green-500" :""}`}>Sing up</NavLink></li>
+     
     </>
  );
 
 return (
-    <div className="navbar bg-base-100 shadow-sm">
-      <div className="navbar-start">
+    <div className=" bg-base-100 shadow-sm ">
+      <div className="w-11/12 mx-auto navbar">
+      <div className="navbar-start ">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -39,6 +45,7 @@ return (
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {links}
+           
           </ul>
         </div>
         <h2 className="btn btn-ghost font-extrabold text-xl">Book Vibe</h2>
@@ -48,9 +55,10 @@ return (
          {links}
         </ul>
       </div>
-      <div className="navbar-end gap-3">
+      <div className="navbar-end gap-3 hidden lg:flex">
         <a className="btn bg-green-500 text-white">Sing in</a>
         <a className="btn bg-blue-400 text-white">Sing up</a>
+      </div>
       </div>
     </div>
   );
