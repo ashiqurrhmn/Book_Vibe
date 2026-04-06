@@ -1,7 +1,19 @@
 import React from "react";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
-  return (
+  const  links = (
+    <>
+    <li> <NavLink to = {"/"} className={({isActive}) =>
+    `${isActive ? "text-green-500 border border-green-500" :""}`}>Home</NavLink></li>
+    <li> <NavLink to = {"/books"} className={({isActive}) =>
+    `mx-3 ${isActive ? "text-green-500 border border-green-500" :""}`}>Listed Books</NavLink></li>
+    <li> <NavLink to = {"/page_read"} className={({isActive}) =>
+    ` ${isActive ? "text-green-500 border border-green-500" :""}`}>Pages to Read</NavLink></li>
+    </>
+ );
+
+return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
@@ -26,52 +38,19 @@ const Navbar = () => {
             tabIndex="-1"
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <h2 className="btn btn-ghost font-extrabold text-xl">Book Vibe</h2>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2 bg-base-100 w-40 z-1">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
+         {links}
         </ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+      <div className="navbar-end gap-3">
+        <a className="btn bg-green-500 text-white">Sing in</a>
+        <a className="btn bg-blue-400 text-white">Sing up</a>
       </div>
     </div>
   );
