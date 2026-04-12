@@ -11,15 +11,15 @@ const Navbar = () => {
     <li> <NavLink to = {"/page_read"} className={({isActive}) =>
     ` ${isActive ? "text-green-500 border border-green-500" :""}`}>Pages to Read</NavLink></li>
     <li> <NavLink to = {"/page_read"} className={({isActive}) =>
-    ` ${isActive ? "text-green-500 border border-green-500" :""}`}>Sing in</NavLink></li>
+    `md:hidden ${isActive ? "text-green-500 border border-green-500" :""}`}>Sing in</NavLink></li>
     <li> <NavLink to = {"/page_read"} className={({isActive}) =>
-    ` ${isActive ? "text-green-500 border border-green-500" :""}`}>Sing up</NavLink></li>
+    `md:hidden ${isActive ? "text-green-500 border border-green-500 " :""}`}>Sing up</NavLink></li>
      
     </>
  );
 
 return (
-    <div className=" bg-base-100 shadow-sm ">
+    <div className=" bg-base-100 shadow-sm sticky top-0 z-10">
       <div className="w-11/12 mx-auto navbar">
       <div className="navbar-start ">
         <div className="dropdown">

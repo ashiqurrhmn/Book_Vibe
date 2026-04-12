@@ -1,14 +1,21 @@
+import { useContext} from "react";
+import { SiIlovepdf } from "react-icons/si";
 import { useLoaderData, useParams } from "react-router";
+import { BookContext } from "../../context/BookProvider";
 // const booksPromise = fetch("/booksData.json").then((res) => res.json());
 
 const BookDetails = () => {
   const { bookId } = useParams();
-  console.log(bookId, "bookId");
+  
+  const {handleMarkAsRead, handleWishlist} = useContext(BookContext);
+
+
   // const books = use(booksPromise);
   const books = useLoaderData();
-  console.log(books, "books");
+
   const expectedBook = books.find((book) => book.bookId == bookId);
-  console.log(expectedBook, "expectedBook");
+
+  
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-9/12 mx-auto my-20 ">
@@ -36,26 +43,26 @@ const BookDetails = () => {
           ))}
         </div>
         <div className="border-t border-gray-200 my-5">
-            <div className="flex items-center justify-between md:w-1/3">
+            <div className="flex items-center justify-between md:w-2/3">
                 <p className="text-gray-500 py-4">Number of Pages:</p>
                 <p className="font-bold"> {expectedBook.totalPages}</p>
             </div>
-            <div className="flex items-center justify-between md:w-1/3">
+            <div className="flex items-center justify-between md:w-2/3">
                 <p className="text-gray-500 py-4">Publisher:</p>
                 <p className="font-bold"> {expectedBook.publisher}</p>
             </div>
-            <div className="flex items-center justify-between md:w-1/3">
+            <div className="flex items-center justify-between md:w-2/3">
                 <p className="text-gray-500 py-4">Year of Publishing:</p>
                 <p className="font-bold"> {expectedBook.yearOfPublishing}</p>
             </div>
-            <div className="flex items-center justify-between md:w-1/3">
+            <div className="flex items-center justify-between md:w-2/3">
                 <p className="text-gray-500 py-4">Rating:</p>
                 <p className="font-bold"> {expectedBook.rating}</p>
             </div>
         </div>
         <div className="card-actions justify-end">
-          <button className="btn ">Read</button>
-          <button className="btn bg-green-500 text-white">Wishlist</button>
+          <button className="btn " onClick={() => handleMarkAsRead(expectedBook)}>Mark as Read</button>
+          <button className="btn bg-green-500 text-white flex items-center justify-center" onClick={() => handleWishlist(expectedBook)}><span><SiIlovepdf /></span>Add to Wishlist</button>
         </div>
       </div>
     </div>
